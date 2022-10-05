@@ -1,0 +1,159 @@
+{
+  "flight": {
+    "itineraries": [
+      {
+        "duration": "PT4H15M",
+        "segments": [
+          {
+            "departure": {
+              "iataCode": "CGB",
+              "at": "2022-05-15T11:20:00"
+            },
+            "arrival": {
+              "iataCode": "CGH",
+              "at": "2022-05-15T14:40:00"
+            },
+            "carrierCode": "G3",
+            "number": "1455",
+            "aircraft": {
+              "code": "738"
+            },
+            "operating": {
+              "carrierCode": "G3"
+            },
+            "duration": "PT2H20M",
+            "id": "1",
+            "numberOfStops": 0
+          },
+          {
+            "departure": {
+              "iataCode": "CGH",
+              "at": "2022-05-15T15:35:00"
+            },
+            "arrival": {
+              "iataCode": "CWB",
+              "at": "2022-05-15T16:35:00"
+            },
+            "carrierCode": "G3",
+            "number": "1140",
+            "aircraft": {
+              "code": "738"
+            },
+            "operating": {
+              "carrierCode": "G3"
+            },
+            "duration": "PT1H",
+            "id": "2",
+            "numberOfStops": 0
+          }
+        ]
+      },
+      {
+        "duration": "PT4H15M",
+        "segments": [
+          {
+            "departure": {
+              "iataCode": "CWB",
+              "at": "2022-05-20T07:30:00"
+            },
+            "arrival": {
+              "iataCode": "GRU",
+              "terminal": "2",
+              "at": "2022-05-20T08:50:00"
+            },
+            "carrierCode": "G3",
+            "number": "1121",
+            "aircraft": {
+              "code": "738"
+            },
+            "operating": {
+              "carrierCode": "G3"
+            },
+            "duration": "PT1H20M",
+            "id": "7",
+            "numberOfStops": 0
+          },
+          {
+            "departure": {
+              "iataCode": "GRU",
+              "terminal": "2",
+              "at": "2022-05-20T09:30:00"
+            },
+            "arrival": {
+              "iataCode": "CGB",
+              "at": "2022-05-20T10:45:00"
+            },
+            "carrierCode": "G3",
+            "number": "1580",
+            "aircraft": {
+              "code": "738"
+            },
+            "operating": {
+              "carrierCode": "G3"
+            },
+            "duration": "PT2H15M",
+            "id": "8",
+            "numberOfStops": 0
+          }
+        ]
+      }
+    ],
+    "price": {
+      "currency": "BRL",
+      "total": "4807.76",
+      "travelerPricings": [
+        {
+          "travelerId": "1",
+          "fareOption": "STANDARD",
+          "travelerType": "ADULT",
+          "price": {
+            "currency": "BRL",
+            "total": "1261.10",
+            "base": "1178.42"
+          }
+        },
+        {
+          "travelerId": "2",
+          "fareOption": "STANDARD",
+          "travelerType": "ADULT",
+          "price": {
+            "currency": "BRL",
+            "total": "1261.10",
+            "base": "1178.42"
+          }
+        },
+        {
+          "travelerId": "3",
+          "fareOption": "STANDARD",
+          "travelerType": "CHILD",
+          "price": {
+            "currency": "BRL",
+            "total": "1142.78",
+            "base": "1060.10"
+          }
+        },
+        {
+          "travelerId": "4",
+          "fareOption": "STANDARD",
+          "travelerType": "CHILD",
+          "price": {
+            "currency": "BRL",
+            "total": "1142.78",
+            "base": "1060.10"
+          }
+        },
+        {
+          "travelerId": "5",
+          "fareOption": "STANDARD",
+          "travelerType": "HELD_INFANT",
+          "associatedAdultId": "1",
+          "price": {
+            "currency": "BRL",
+            "total": "0.00",
+            "base": "0.00"
+          }
+        }
+      ]
+    }
+  }
+}

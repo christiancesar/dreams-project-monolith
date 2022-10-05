@@ -1,0 +1,33 @@
+{
+  "name": "dreams-project-monolith",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/christiancesar/dreams-project-monolith.git",
+  "license": "MIT",
+  "scripts": {
+    "dev:server": "ts-node-dev --transpile-only --inspect --ignore-watch node_modules src/server.ts",
+    "prisma:migrate": "prisma migrate dev --schema=./src/providers/prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.4.0",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.21",
+    "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "amadeus": "^7.0.0",
+    "axios": "^0.26.1",
+    "bson-objectid": "^2.0.3",
+    "cors": "^2.8.5",
+    "date-fns": "^2.28.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.3",
+    "express-async-errors": "^3.1.1",
+    "prisma": "^3.10.0",
+    "stripe": "^8.210.0",
+    "uuidv4": "^6.2.12"
+  }
+}

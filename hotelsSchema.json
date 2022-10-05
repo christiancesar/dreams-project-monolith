@@ -1,0 +1,75 @@
+{
+  "hotel": {
+    "hotelId": "RTCWBMER",
+    "chainCode": "RT",
+    "dupeId": "700040193",
+    "name": "Mercure Curitiba Centro Hotel",
+    "rating": "4",
+    "cityCode": "CWB",
+    "latitude": -25.43749,
+    "longitude": -49.27776,
+    "hotelDistance": {
+      "distance": 4.4,
+      "distanceUnit": "KM"
+    },
+    "address": {
+      "lines": [
+        "RUA EMILIANO PERNETA 747",
+        "CENTRO"
+      ],
+      "postalCode": "80420080",
+      "cityName": "CURITIBA",
+      "countryCode": "BR",
+      "stateCode": "PR"
+    },
+    "contact": {
+      "phone": "55/41/32341212",
+      "fax": "55/41/33237900",
+      "email": "reservasmercure@terra.com.br"
+    }
+  },
+  "offers": [
+    {
+      "id": "T9TSELOUDZ",
+      "checkInDate": "2022-05-15",
+      "checkOutDate": "2022-05-20",
+      "rateCode": "1KD",
+      "rateFamilyEstimated": {
+        "code": "BAR",
+        "type": "P"
+      },
+      "boardType": "ROOM_ONLY",
+      "room": {
+        "type": "A1D",
+        "typeEstimated": {
+          "category": "EXECUTIVE_ROOM",
+          "beds": 1,
+          "bedType": "DOUBLE"
+        },
+        "description": {
+          "text": "FLEX - RO B2C-Room only\nThe hotel do not accept check.\nLuxury apartment with double bed",
+          "lang": "EN"
+        }
+      },
+      "guests": {
+        "adults": 2
+      },
+      "price": {
+        "currency": "BRL",
+        "total": "1613.25",
+        "variations": {
+          "average": {
+            "base": "308.00"
+          },
+          "changes": [
+            {
+              "startDate": "2022-05-15",
+              "endDate": "2022-05-20",
+              "base": "308.00"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
