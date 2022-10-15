@@ -1,4 +1,4 @@
-export interface HotelOfferSearchRequest {
+export type HotelOfferSearchRequest = {
   cityCode: string;
   latitude?: number;
   longitude?: number;

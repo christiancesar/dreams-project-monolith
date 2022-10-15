@@ -1,6 +1,6 @@
 import { TravelClass } from "./TravelClass";
 
-export interface FlightOfferSearchRequest {
+export type FlightOfferSearchRequest = {
   originLocationCode: string;
   destinationLocationCode: string;
   departureDate: string;

@@ -1,5 +1,5 @@
-import { ICreateUserDTO } from "../../dtos/ICreateUserDTO"
-import { IUpdateUserDTO } from "../../dtos/IUpdateUserDTO"
+import { ICreateUserDTO } from "../../dtos/CreateUserDTO"
+import { IUpdateUserDTO } from "../../dtos/UpdateUserDTO"
 import { User } from "../../entities/UserEntity"
 
 export interface IUsersRepository {

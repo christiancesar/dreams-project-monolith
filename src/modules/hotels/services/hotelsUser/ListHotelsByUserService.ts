@@ -1,4 +1,4 @@
-import HotelsRepository from "../../repositories/implementations/HotelsRepository";
+import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 import ObjectID from "bson-objectid";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
 import AppError from "../../../../errors/AppError";
@@ -26,7 +26,7 @@ export default class ListHotelsByUserService {
   }
 
   async execute({ userId }: HotelRequest): Promise<HotelResponse[]> {
-    if (!ObjectID.isValid(userId)){
+    if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id")
     }
 

@@ -1,12 +1,12 @@
 import { prisma } from "../../../../../prisma"
-import ICreateHotelDTO from "../../dtos/ICreateHotelDTO"
+import { CreateHotelDTO } from "../../dtos/CreateHotelDTO"
 import { Hotel } from "../../entities/HotelEntity"
 import { IHotelsRepository } from "../interfaces/IHotelsRepository"
 
 
 export class HotelsRepository implements IHotelsRepository {
 
-  async create({ hotel, offers, userId, isPackage }: ICreateHotelDTO): Promise<Hotel> {
+  async create({ hotel, offers, userId, isPackage }: CreateHotelDTO): Promise<Hotel> {
     const hotelCreated = await prisma.hotel.create({
       data: {
         userId,

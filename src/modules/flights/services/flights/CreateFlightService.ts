@@ -4,7 +4,7 @@ import { UsersRepository } from "../../../users/repositories/implementations/Use
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
-type FlightRequest = {
+type CreateFlightRequest = {
   itineraries: string;
   price: string;
   userId: string;
@@ -20,7 +20,7 @@ export default class CreateFlightService {
     this.userRepository = new UsersRepository();
   }
 
-  async execute({ itineraries, price, userId, isPackage }: FlightRequest): Promise<Flight> {
+  async execute({ itineraries, price, userId, isPackage }: CreateFlightRequest): Promise<Flight> {
     if (!ObjectID.isValid(userId)){
       throw new AppError("Invalid id or empty!")
     }

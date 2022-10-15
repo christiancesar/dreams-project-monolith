@@ -1,4 +1,4 @@
-export default interface ICreateHotelDTO {
+export type CreateHotelDTO = {
   userId: string;
   hotel: any;
   offers: any;

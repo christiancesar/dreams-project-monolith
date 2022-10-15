@@ -1,4 +1,4 @@
-export default interface IHotelOffersSearch {
+export type HotelOffersSearch = {
   cityCode: string;
   checkInDate: string;
   checkOutDate: string;

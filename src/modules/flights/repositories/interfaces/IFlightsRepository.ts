@@ -1,8 +1,8 @@
-import { ICreateFlightDTO } from "../../dtos/ICreateFlightDTO"
+import { CreateFlightDTO } from "../../dtos/CreateFlightDTO"
 import { Flight } from "../../entities/FlightEntity"
 
-export default interface IFlightsRepository {
-  create(data: ICreateFlightDTO): Promise<Flight>
+export interface IFlightsRepository {
+  create(data: CreateFlightDTO): Promise<Flight>
   findByFlightId(flightId: string): Promise<Flight | null>
   findAll(): Promise<Flight[]>
   deleteFlight(flightId: string): Promise<void>

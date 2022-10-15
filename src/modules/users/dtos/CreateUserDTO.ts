@@ -1,5 +1,4 @@
-export interface IUpdateUserDTO {
-  id: string;
+export type CreateUserDTO = {
   firstName: string;
   lastName: string;
   age: number;

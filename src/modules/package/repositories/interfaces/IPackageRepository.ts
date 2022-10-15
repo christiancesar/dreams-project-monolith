@@ -1,8 +1,8 @@
-import { ICreatePackageDTO } from "../../dtos/ICreatePackageDTO";
+import { CreatePackageDTO } from "../../dtos/CreatePackageDTO";
 import { Package } from "../../entities/PackageEntity";
 
-export default interface IPackageRepository {
-  create(data: ICreatePackageDTO): Promise<Package>;
+export interface IPackageRepository {
+  create(data: CreatePackageDTO): Promise<Package>;
   findAllPackages(): Promise<Package[]>;
   findPackagesByUserId(userId: string): Promise<Package[]>;
 }

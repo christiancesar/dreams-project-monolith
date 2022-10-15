@@ -4,11 +4,11 @@
 //
 //   "Set quicktype target language"
 
-export interface HotelOfferSearchResponse {
+export type HotelOfferSearchResponse = {
   data: HotelOffer[];
 }
 
-export interface HotelOffer {
+export type HotelOffer = {
   type:      string;
   hotel:     Hotel;
   available: boolean;
@@ -16,7 +16,7 @@ export interface HotelOffer {
   self:      string;
 }
 
-export interface Hotel {
+export type Hotel = {
   type:          string;
   hotelId:       string;
   chainCode:     string;
@@ -32,7 +32,7 @@ export interface Hotel {
   description:   Description;
 }
 
-export interface Address {
+export type Address = {
   lines:       string[];
   postalCode:  string;
   cityName:    string;
@@ -40,23 +40,23 @@ export interface Address {
   stateCode:   string;
 }
 
-export interface Contact {
+export type Contact = {
   phone: string;
   fax:   string;
   email: string;
 }
 
-export interface Description {
+export type Description = {
   lang: string;
   text: string;
 }
 
-export interface HotelDistance {
+export type HotelDistance = {
   distance:     number;
   distanceUnit: string;
 }
 
-export interface Offer {
+export type Offer = {
   id:           string;
   checkInDate:  string;
   checkOutDate: string;
@@ -69,44 +69,44 @@ export interface Offer {
   self:         string;
 }
 
-export interface Commission {
+export type Commission = {
   percentage: string;
 }
 
-export interface Guests {
+export type Guests = {
   adults: number;
 }
 
-export interface Policies {
+export type Policies = {
   paymentType:  string;
   cancellation: Cancellation;
 }
 
-export interface Cancellation {
+export type Cancellation = {
   deadline: string;
 }
 
-export interface Price {
+export type Price = {
   currency: string;
   base:     string;
   total:    string;
   taxes:    Tax[];
 }
 
-export interface Tax {
+export type Tax = {
   code:     string;
   amount:   string;
   currency: string;
   included: boolean;
 }
 
-export interface Room {
+export type Room = {
   type:          string;
   typeEstimated: TypeEstimated;
   description:   Description;
 }
 
-export interface TypeEstimated {
+export type TypeEstimated = {
   category: string;
   beds:     number;
   bedType:  string;

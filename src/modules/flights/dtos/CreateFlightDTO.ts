@@ -1,4 +1,4 @@
-export interface ICreateFlightDTO {
+export type CreateFlightDTO = {
   userId: string;
   itineraries: any;
   price: any;

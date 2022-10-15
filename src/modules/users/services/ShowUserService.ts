@@ -3,7 +3,7 @@ import { UsersRepository } from "../repositories/implementations/UsersRepository
 import ObjectID from "bson-objectid";
 import AppError from "../../../errors/AppError";
 
-interface IRequest {
+type ShowUserRequest = {
   userId: string
 }
 
@@ -14,7 +14,7 @@ export class ShowUserService {
     this.userRepository = new UsersRepository();
   }
 
-  async execute({ userId }: IRequest): Promise<User> {
+  async execute({ userId }: ShowUserRequest): Promise<User> {
 
     if (!ObjectID.isValid(userId)){
       throw new AppError("Invalid id")

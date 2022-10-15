@@ -3,18 +3,18 @@ import AppError from "../../../../errors/AppError";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
-interface IFlight {
+type ShowFlightRequest = {
   flightId: string
 }
 
-export default class CreateFlightService {
+export default class ShowFlightService {
   private flightsRepository: FlightsRepository;
 
   constructor() {
     this.flightsRepository = new FlightsRepository()
   }
 
-  async execute({ flightId }: IFlight): Promise<Flight | null> {
+  async execute({ flightId }: ShowFlightRequest): Promise<Flight | null> {
     if (!ObjectID.isValid(flightId)){
       throw new AppError("Invalid id")
     }

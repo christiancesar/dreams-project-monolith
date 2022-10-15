@@ -1,5 +1,5 @@
 import { Hotel } from "../../entities/HotelEntity";
-import HotelsRepository from "../../repositories/implementations/HotelsRepository";
+import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 
 export default class ListHotelsService {
 

@@ -1,7 +1,7 @@
 import ObjectID from "bson-objectid";
 import AppError from "../../../../errors/AppError";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
-import HotelsRepository from "../../repositories/implementations/HotelsRepository";
+import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 
 type HotelRequest = {
   userId: string;
