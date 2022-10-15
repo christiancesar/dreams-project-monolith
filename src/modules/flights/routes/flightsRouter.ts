@@ -3,7 +3,6 @@ import { FlightsController } from "../controllers/FlightsController";
 import flightsOffersRouter from "./flightsOffersRouter";
 import flightsUserRouter from "./flightsUserRouter";
 
-
 const flightsRouter = Router();
 const flightsController = new FlightsController();
 
@@ -17,5 +16,4 @@ flightsRouter.get('/', flightsController.index);
 
 flightsRouter.post('/', flightsController.create);
 
-
-export default flightsRouter
+export default flightsRouter;

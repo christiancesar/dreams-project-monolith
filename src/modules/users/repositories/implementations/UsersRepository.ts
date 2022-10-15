@@ -1,12 +1,12 @@
 import { prisma } from "../../../../../prisma";
-import { ICreateUserDTO } from "../../dtos/CreateUserDTO";
-import { IUpdateUserDTO } from "../../dtos/UpdateUserDTO";
+import { CreateUserDTO } from "../../dtos/CreateUserDTO";
+import { UpdateUserDTO } from "../../dtos/UpdateUserDTO";
 import { User } from "../../entities/UserEntity";
 import { IUsersRepository } from "../interfaces/IUserRepository";
 
 
 export class UsersRepository implements IUsersRepository {
-  async create(data: ICreateUserDTO): Promise<User> {
+  async create(data: CreateUserDTO): Promise<User> {
     const user = await prisma.user.create({
       data
     })
@@ -28,7 +28,7 @@ export class UsersRepository implements IUsersRepository {
     return users
   }
 
-  async updateUser({ age, birthday, email, firstName, id, lastName }: IUpdateUserDTO): Promise<User> {
+  async updateUser({ age, birthday, email, firstName, id, lastName }: UpdateUserDTO): Promise<User> {
     const userUpdate = await prisma.user.update({
       where: {
         id: id

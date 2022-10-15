@@ -1,10 +1,10 @@
-import "dotenv/config"
-import express from 'express';
 import cors from 'cors';
+import "dotenv/config";
+import express from 'express';
 import 'express-async-errors';
 import { prisma } from '../prisma';
-import interceptErrorMiddleware from './middlewares/interceptErrorMiddleware';
-import routes from './routes';
+import { interceptErrorMiddleware } from './middlewares/interceptErrorMiddleware';
+import { routes } from './routes';
 
 const server = express();
 

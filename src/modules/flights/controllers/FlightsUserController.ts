@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import ListFlightsByUserService from "../services/flightsUser/ListFlightsByUserService";
+import { ListFlightsByUserService } from "../services/flightsUser/ListFlightsByUserService";
 
-class FlightsUserController {
+export class FlightsUserController {
   async index(request: Request, response: Response): Promise<Response> {
     const { userId } = request.params
     const listFlightsByUserService = new ListFlightsByUserService();
@@ -10,4 +10,3 @@ class FlightsUserController {
   }
 }
 
-export default FlightsUserController;

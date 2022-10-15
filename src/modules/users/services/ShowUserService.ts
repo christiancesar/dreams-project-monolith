@@ -1,7 +1,7 @@
+import ObjectID from "bson-objectid";
+import { AppError } from "../../../errors/AppError";
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
-import ObjectID from "bson-objectid";
-import AppError from "../../../errors/AppError";
 
 type ShowUserRequest = {
   userId: string

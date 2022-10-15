@@ -1,8 +1,8 @@
-import AppError from "../../../errors/AppError";
+import { AppError } from "../../../errors/AppError";
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
 
-type IRequestCreateUser = {
+type CreateUserRequest = {
   firstName: string;
   lastName: string;
   birthday: string;
@@ -23,8 +23,7 @@ export class CreateUserService {
     birthday,
     age,
     email
-  }: IRequestCreateUser): Promise<User>
-  {
+  }: CreateUserRequest): Promise<User> {
     if (age <= 17) {
       throw new AppError("Age must be greater than 17");
     }

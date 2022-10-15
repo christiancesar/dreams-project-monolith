@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import AssemblingPackageService from "../services/packageOffers/AssemblingPackageService";
+import { AssemblingPackageService } from "../services/packageOffers/AssemblingPackageService";
 
-export default class PackageOffersControllers {
-  
+export class PackageOffersControllers {
+
   async index(request: Request, response: Response): Promise<Response> {
     const {
       adults,

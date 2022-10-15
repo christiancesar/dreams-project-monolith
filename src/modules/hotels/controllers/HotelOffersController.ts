@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { HotelOffersSearch } from "../dtos/HotelOffersSearch";
-import HotelOfferSearchService from "../services/hotelOffers/HotelOffersSearchService";
+import { HotelOfferSearchService } from "../services/hotelOffers/HotelOffersSearchService";
 
 
 export class HotelOffersController {

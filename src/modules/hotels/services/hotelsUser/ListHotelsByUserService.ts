@@ -1,7 +1,7 @@
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 import ObjectID from "bson-objectid";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
-import AppError from "../../../../errors/AppError";
+import { AppError } from "../../../../errors/AppError";
 
 type HotelRequest = {
   userId: string;
@@ -15,7 +15,7 @@ type HotelResponse = {
   updatedAt: Date;
 }
 
-export default class ListHotelsByUserService {
+export class ListHotelsByUserService {
 
   private hotelsRepository: HotelsRepository;
   private userRepository: UsersRepository;

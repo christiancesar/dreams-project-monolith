@@ -10,4 +10,4 @@ usersRouter.get('/', usersControllers.index);
 usersRouter.get('/:userId', usersControllers.show);
 usersRouter.patch('/', usersControllers.update);
 
-export default usersRouter
+export default usersRouter;

@@ -3,7 +3,7 @@ import { HotelOfferSearchResponse } from "../../../../@types/amadeus/hotels/Hote
 import { amadeus } from "../../../../providers/amadeus/amadeusApi";
 import { HotelOffersSearch } from "../../dtos/HotelOffersSearch";
 
-export default class HotelOfferSearchService {
+export class HotelOfferSearchService {
   async execute({
     adults,
     checkInDate,

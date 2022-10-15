@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { FlightOfferSearchRequest } from "../../../@types/amadeus/flights/FlightOfferSearchRequest";
-import FlightOfferSearchService from "../services/flightOffers/FlightOfferSearchService";
+import { FlightOfferSearchService } from "../services/flightOffers/FlightOfferSearchService";
 
-export default class FlightsOffersController {
+export class FlightsOffersController {
 
 
   async index(request: Request, response: Response): Promise<Response> {

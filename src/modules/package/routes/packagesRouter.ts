@@ -1,5 +1,5 @@
 import { Router } from "express";
-import PackageControllers from "../controllers/PackageController";
+import { PackageControllers } from "../controllers/PackageController";
 import packageOffersRouter from "./packageOffersRouter";
 import packageUserRouter from "./packageUserRouter";
 

@@ -1,7 +1,7 @@
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
-export default class ListFlightsService {
+export class ListFlightsService {
   private flightsRepository: FlightsRepository;
 
   constructor() {

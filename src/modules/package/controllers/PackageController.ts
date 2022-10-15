@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import CreatePackageService from "../services/package/CreatePackageService";
+import { CreatePackageService } from "../services/package/CreatePackageService";
 
-class PackageControllers {
+export class PackageControllers {
 
   async create(request: Request, response: Response): Promise<Response> {
     const { userId, flight, hotel, amount, off } = request.body;
@@ -20,5 +20,3 @@ class PackageControllers {
   }
 
 }
-
-export default PackageControllers

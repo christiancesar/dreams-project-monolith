@@ -1,9 +1,9 @@
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
 import ObjectID from "bson-objectid";
-import AppError from "../../../errors/AppError";
+import { AppError } from "../../../errors/AppError";
 
-type IRequestUpdateUser = {
+type UpdateUserRequest = {
   id: string
   firstName: string;
   lastName: string;
@@ -26,10 +26,9 @@ export class UpdateUserService {
     birthday,
     age,
     email
-  }: IRequestUpdateUser): Promise<User>
-  {
+  }: UpdateUserRequest): Promise<User> {
 
-    if (!ObjectID.isValid(id)){
+    if (!ObjectID.isValid(id)) {
       throw new AppError("Invalid id")
     }
 

@@ -1,7 +1,7 @@
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 
-export default class ListHotelsService {
+export class ListHotelsService {
 
   private hotelsRepository: HotelsRepository;
 

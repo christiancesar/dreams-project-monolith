@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import ListHotelsByUserService from "../services/hotelsUser/ListHotelsByUserService";
+import { ListHotelsByUserService } from "../services/hotelsUser/ListHotelsByUserService";
 
-class HotelUserController {
+export class HotelUserController {
   async index(request: Request, response: Response): Promise<Response> {
     const { userId } = request.params
     const listHotelsByUserService = new ListHotelsByUserService();
@@ -10,4 +10,3 @@ class HotelUserController {
   }
 }
 
-export default HotelUserController;

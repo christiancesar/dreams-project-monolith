@@ -5,7 +5,7 @@ import { IPackageRepository } from "../interfaces/IPackageRepository";
 
 
 
-class PackageRepository implements IPackageRepository {
+export class PackageRepository implements IPackageRepository {
 
   async create(data: CreatePackageDTO): Promise<Package> {
     const packageCreated = await prisma.package.create({ data });
@@ -22,4 +22,3 @@ class PackageRepository implements IPackageRepository {
 
 }
 
-export default PackageRepository;

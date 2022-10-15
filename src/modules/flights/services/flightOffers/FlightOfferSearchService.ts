@@ -3,7 +3,7 @@ import { FlightOfferSearchResponse } from "../../../../@types/amadeus/flights/Fl
 import { TravelClass } from "../../../../@types/amadeus/flights/TravelClass";
 import { amadeus } from "../../../../providers/amadeus/amadeusApi";
 
-export default class FlightOfferSearchService {
+export class FlightOfferSearchService {
 
   public async execute({
     adults,

@@ -1,14 +1,14 @@
 import ObjectID from "bson-objectid";
-import AppError from "../../../../errors/AppError";
+import { AppError } from "../../../../errors/AppError";
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 
-type HotelRequest ={
+type ShowHotelRequest = {
   hotelId: string
 }
 
 
-export default class ShowHotelService {
+export class ShowHotelService {
 
   private hotelsRepository: HotelsRepository;
 
@@ -16,8 +16,8 @@ export default class ShowHotelService {
     this.hotelsRepository = new HotelsRepository()
   }
 
-  async execute({ hotelId }: HotelRequest): Promise<Hotel | null> {
-    if (!ObjectID.isValid(hotelId)){
+  async execute({ hotelId }: ShowHotelRequest): Promise<Hotel | null> {
+    if (!ObjectID.isValid(hotelId)) {
       throw new AppError("Invalid id")
     }
 

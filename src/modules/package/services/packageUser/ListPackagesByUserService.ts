@@ -3,7 +3,7 @@ import { FlightsRepository } from "../../../flights/repositories/implementations
 import { Hotel } from "../../../hotels/entities/HotelEntity";
 import { HotelsRepository } from "../../../hotels/repositories/implementations/HotelsRepository";
 import { Package } from "../../entities/PackageEntity";
-import PackageRepository from "../../repositories/implementations/PackageRepository";
+import { PackageRepository } from "../../repositories/implementations/PackageRepository";
 
 type PackagesByUserRequest = {
   userId: string
@@ -20,7 +20,7 @@ type PackageCreateResponse = {
 }
 
 
-class ListPackagesByUserService {
+export class ListPackagesByUserService {
   private packageRepository: PackageRepository;
   private flightsRepository: FlightsRepository;
   private hotelsRepository: HotelsRepository;
@@ -41,7 +41,7 @@ class ListPackagesByUserService {
         const flight = await this.flightsRepository.findByFlightId(package_.flightId);
         const hotel = await this.hotelsRepository.findByHotelId(package_.hotelId);
 
-        return{
+        return {
           id: package_.id,
           flight,
           hotel,
@@ -60,5 +60,3 @@ class ListPackagesByUserService {
     return packagesByUser;
   }
 }
-
-export default ListPackagesByUserService;

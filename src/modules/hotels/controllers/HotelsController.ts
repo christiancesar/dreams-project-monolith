@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import CreateHotelService from "../services/hotels/CreateHotelService";
-import ListHotelsService from "../services/hotels/ListHotelsService";
-import ShowHotelService from "../services/hotels/ShowHotelService";
+import { CreateHotelService } from "../services/hotels/CreateHotelService";
+import { ListHotelsService } from "../services/hotels/ListHotelsService";
+import { ShowHotelService } from "../services/hotels/ShowHotelService";
 
-export default class HotelsController {
+export class HotelsController {
   async create(request: Request, response: Response): Promise<Response> {
     const { hotel, offers, userId, isPackage } = request.body
     const createHotelService = new CreateHotelService();

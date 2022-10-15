@@ -1,5 +1,5 @@
 import ObjectID from "bson-objectid";
-import AppError from "../../../../errors/AppError";
+import { AppError } from "../../../../errors/AppError";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
@@ -7,7 +7,7 @@ type ShowFlightRequest = {
   flightId: string
 }
 
-export default class ShowFlightService {
+export class ShowFlightService {
   private flightsRepository: FlightsRepository;
 
   constructor() {
@@ -15,7 +15,7 @@ export default class ShowFlightService {
   }
 
   async execute({ flightId }: ShowFlightRequest): Promise<Flight | null> {
-    if (!ObjectID.isValid(flightId)){
+    if (!ObjectID.isValid(flightId)) {
       throw new AppError("Invalid id")
     }
 

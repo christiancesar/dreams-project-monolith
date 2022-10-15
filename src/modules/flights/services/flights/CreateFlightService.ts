@@ -1,5 +1,5 @@
 import ObjectID from "bson-objectid";
-import AppError from "../../../../errors/AppError";
+import { AppError } from "../../../../errors/AppError";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
@@ -11,7 +11,7 @@ type CreateFlightRequest = {
   isPackage: boolean;
 }
 
-export default class CreateFlightService {
+export class CreateFlightService {
   private flightsRepository: FlightsRepository;
   private userRepository: UsersRepository;
 
@@ -21,7 +21,7 @@ export default class CreateFlightService {
   }
 
   async execute({ itineraries, price, userId, isPackage }: CreateFlightRequest): Promise<Flight> {
-    if (!ObjectID.isValid(userId)){
+    if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id or empty!")
     }
 

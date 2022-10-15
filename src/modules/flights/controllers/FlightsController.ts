@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import CreateFlightService from "../services/flights/CreateFlightService";
-import ListFlightsService from "../services/flights/ListFlightsService";
-import ShowFlightService from "../services/flights/ShowFlightService";
+import { CreateFlightService } from "../services/flights/CreateFlightService";
+import { ListFlightsService } from "../services/flights/ListFlightsService";
+import { ShowFlightService } from "../services/flights/ShowFlightService";
 
 
 export class FlightsController {

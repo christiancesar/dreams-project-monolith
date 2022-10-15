@@ -1,14 +1,14 @@
 import ObjectID from "bson-objectid";
-import AppError from "../../../../errors/AppError";
+import { AppError } from "../../../../errors/AppError";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
-type FlightRequest = {
+type ListFlightsByUserRequest = {
   userId: string
 }
 
-export default class ListFlightsByUserService {
+export class ListFlightsByUserService {
   private flightsRepository: FlightsRepository;
   private userRepository: UsersRepository;
 
@@ -17,8 +17,8 @@ export default class ListFlightsByUserService {
     this.userRepository = new UsersRepository();
   }
 
-  async execute({ userId }: FlightRequest): Promise<Flight[]> {
-    if (!ObjectID.isValid(userId)){
+  async execute({ userId }: ListFlightsByUserRequest): Promise<Flight[]> {
+    if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id")
     }
 

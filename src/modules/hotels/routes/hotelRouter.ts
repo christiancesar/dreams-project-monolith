@@ -1,7 +1,7 @@
 import { Router } from "express";
-import HotelsController from "../controllers/HotelsController";
-import hotelsOffersRouter from "./hotelsOffersRouter";
-import hotelUserRouter from "./hotelUserRouter";
+import { HotelsController } from "../controllers/HotelsController";
+import hotelsOffersRouter  from "./hotelOffersRouter";
+import hotelUserRouter  from "./hotelUserRouter";
 
 
 const hotelRouter = Router();
@@ -15,4 +15,3 @@ hotelRouter.get('/:hotelId', hotelsController.show);
 hotelRouter.get('/', hotelsController.index);
 
 export default hotelRouter;
-

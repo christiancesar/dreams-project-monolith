@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import ListPackagesByUserService from "../services/packageUser/ListPackagesByUserService";
+import { ListPackagesByUserService } from "../services/packageUser/ListPackagesByUserService";
 
-class PackageUserController {
+export class PackageUserController {
   async index(request: Request, response: Response): Promise<Response> {
     const { userId } = request.params
     const listPackagesByUserService = new ListPackagesByUserService();
@@ -9,5 +9,3 @@ class PackageUserController {
     return response.json(packages)
   }
 }
-
-export default PackageUserController;

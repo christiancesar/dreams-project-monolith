@@ -1,22 +1,9 @@
-import { prisma } from "@prisma/client";
 import { Flight } from "../../../flights/entities/FlightEntity";
 import { FlightsRepository } from "../../../flights/repositories/implementations/FlightsRepository";
 import { Hotel } from "../../../hotels/entities/HotelEntity";
 import { HotelsRepository } from "../../../hotels/repositories/implementations/HotelsRepository";
 import { Package } from "../../entities/PackageEntity";
-import PackageRepository from "../../repositories/implementations/PackageRepository";
-
-type CreateFlightDTO = {
-  userId: string;
-  itineraries: string;
-  price: string;
-}
-
-type CreateHotelDTO = {
-  userId: string;
-  hotel: string;
-  offers: string;
-}
+import { PackageRepository } from "../../repositories/implementations/PackageRepository";
 
 type PackageCreateRequestDTO = {
   userId: string;
@@ -48,7 +35,7 @@ type PackageCreateResponseDTO = {
   updatedAt: Date;
 }
 
-class CreatePackageService {
+export class CreatePackageService {
   private packageRepository: PackageRepository;
   private hotelsRepository: HotelsRepository;
   private flightsRepository: FlightsRepository;
@@ -98,7 +85,6 @@ class CreatePackageService {
       console.error(`Error on CreatePackageService when create package: ${error}`);
     }
 
-
     return {
       id: packageCreated.id,
       hotel: hotelCreated,
@@ -110,5 +96,3 @@ class CreatePackageService {
     }
   }
 }
-
-export default CreatePackageService

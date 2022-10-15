@@ -1,7 +1,7 @@
-import AppError from '../errors/AppError';
+import { AppError } from '../errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 
-export default function interceptErrorMiddleware(
+export function interceptErrorMiddleware(
   err: Error,
   request: Request,
   response: Response,
