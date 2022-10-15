@@ -18,7 +18,9 @@ export class FlightsRepository implements IFlightsRepository {
     const flight = await prisma.flight.findMany()
     return flight
   }
-
+  async deleteFlight(flightId: string): Promise<void> {
+    await prisma.flight.delete({ where: { id: flightId } })
+  }
   async findByUserId(userId: string): Promise<Flight[]> {
     const flights = await prisma.flight.findMany({
       where: {

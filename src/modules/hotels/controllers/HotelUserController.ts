@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ListHotelsByUserService from "../services/hotels/ListHotelsByUserService";
+import ListHotelsByUserService from "../services/hotelsUser/ListHotelsByUserService";
 
 class HotelUserController {
   async index(request: Request, response: Response): Promise<Response> {

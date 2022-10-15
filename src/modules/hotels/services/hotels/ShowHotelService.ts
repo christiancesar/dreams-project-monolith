@@ -1,5 +1,6 @@
-import { Hotel } from "@prisma/client";
+import ObjectID from "bson-objectid";
 import AppError from "../../../../errors/AppError";
+import { Hotel } from "../../entities/HotelEntity";
 import HotelsRepository from "../../repositories/implementations/HotelsRepository";
 
 interface IHotel {
@@ -16,6 +17,10 @@ export default class ShowHotelService {
   }
 
   async execute({ hotelId }: IHotel): Promise<Hotel | null> {
+    if (!ObjectID.isValid(hotelId)){
+      throw new AppError("Invalid id")
+    }
+
     const hotel = await this.hotelsRepository.findByHotelId(hotelId);
 
     if (!hotel) {

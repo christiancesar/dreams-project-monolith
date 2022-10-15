@@ -8,7 +8,7 @@ export interface FlightOfferSearchRequest {
   adults: number;
   children?: number;
   infants?: number;
-  travelClass: TravelClass;
+  travelClass: string;
   currencyCode: string;
   max: number;
 }
