@@ -1,5 +1,6 @@
 import ObjectID from "bson-objectid";
-import { AppError } from "../../../../errors/AppError";
+import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../shared/errors/AppError";
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 
@@ -7,13 +8,13 @@ type ShowHotelRequest = {
   hotelId: string
 }
 
-
+@injectable()
 export class ShowHotelService {
 
-  private hotelsRepository: HotelsRepository;
-
-  constructor() {
-    this.hotelsRepository = new HotelsRepository()
+  constructor(
+    @inject('HotelsRepository')
+    private hotelsRepository: HotelsRepository
+  ) {
   }
 
   async execute({ hotelId }: ShowHotelRequest): Promise<Hotel | null> {

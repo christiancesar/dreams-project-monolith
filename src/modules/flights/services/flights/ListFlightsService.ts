@@ -1,11 +1,14 @@
+import { inject, injectable } from "tsyringe";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
 
+@injectable()
 export class ListFlightsService {
-  private flightsRepository: FlightsRepository;
 
-  constructor() {
-    this.flightsRepository = new FlightsRepository();
+  constructor(
+    @inject('FlightsRepository')
+    private flightsRepository: FlightsRepository
+  ) {
   }
 
   async execute(): Promise<Flight[]> {

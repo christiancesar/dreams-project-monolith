@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import { Flight } from "../../../flights/entities/FlightEntity";
 import { FlightsRepository } from "../../../flights/repositories/implementations/FlightsRepository";
 import { Hotel } from "../../../hotels/entities/HotelEntity";
@@ -19,17 +20,20 @@ type PackageCreateResponse = {
   updatedAt: Date;
 }
 
-
+@injectable()
 export class ListPackagesByUserService {
-  private packageRepository: PackageRepository;
-  private flightsRepository: FlightsRepository;
-  private hotelsRepository: HotelsRepository;
 
-  constructor() {
-    this.packageRepository = new PackageRepository();
-    this.flightsRepository = new FlightsRepository();
-    this.hotelsRepository = new HotelsRepository();
-  }
+
+  constructor(
+    @inject('PackageRepository')
+    private packageRepository: PackageRepository,
+
+    @inject('FlightsRepository')
+    private flightsRepository: FlightsRepository,
+
+    @inject('HotelsRepository')
+    private hotelsRepository: HotelsRepository,
+  ) {  }
 
   async execute({ userId }: PackagesByUserRequest): Promise<PackageCreateResponse[]> {
 

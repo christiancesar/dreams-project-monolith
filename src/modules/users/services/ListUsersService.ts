@@ -1,12 +1,13 @@
+import { injectable, inject } from 'tsyringe';
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
 
+@injectable()
 export class ListUsersService {
-  private userRepository: UsersRepository;
-
-  constructor() {
-    this.userRepository = new UsersRepository();
-  }
+  constructor(
+    @inject('UsersRepository')
+    private userRepository: UsersRepository
+  ) { }
 
   async execute(): Promise<User[]> {
     const users = await this.userRepository.findAll();

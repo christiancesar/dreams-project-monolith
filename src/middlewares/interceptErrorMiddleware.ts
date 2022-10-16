@@ -1,4 +1,4 @@
-import { AppError } from '../errors/AppError';
+import { AppError } from '../shared/errors/AppError';
 import { NextFunction, Request, Response } from 'express';
 
 export function interceptErrorMiddleware(

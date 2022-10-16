@@ -1,5 +1,6 @@
 import ObjectID from "bson-objectid";
-import { AppError } from "../../../../errors/AppError";
+import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../shared/errors/AppError";
 import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
 import { Flight } from "../../entities/FlightEntity";
 import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
@@ -11,13 +12,16 @@ type CreateFlightRequest = {
   isPackage: boolean;
 }
 
+@injectable()
 export class CreateFlightService {
-  private flightsRepository: FlightsRepository;
-  private userRepository: UsersRepository;
 
-  constructor() {
-    this.flightsRepository = new FlightsRepository();
-    this.userRepository = new UsersRepository();
+  constructor(
+    @inject('FlightsRepository')
+    private flightsRepository: FlightsRepository,
+
+    @inject('UsersRepository')
+    private userRepository: UsersRepository
+  ) {
   }
 
   async execute({ itineraries, price, userId, isPackage }: CreateFlightRequest): Promise<Flight> {

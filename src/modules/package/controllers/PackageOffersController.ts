@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { AssemblingPackageService } from "../services/packageOffers/AssemblingPackageService";
 
 export class PackageOffersControllers {
@@ -15,7 +16,7 @@ export class PackageOffersControllers {
       travelClass,
       roomQuantity
     } = request.body;
-    const assemblingPackageService = new AssemblingPackageService();
+    const assemblingPackageService = container.resolve(AssemblingPackageService);
 
     const packages = await assemblingPackageService.execute({
       adults,

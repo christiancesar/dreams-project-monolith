@@ -1,7 +1,7 @@
 import { FlightOfferSearchRequest } from "../../../../@types/amadeus/flights/FlightOfferSearchRequest";
 import { FlightOfferSearchResponse } from "../../../../@types/amadeus/flights/FlightOfferSearchResponse";
 import { TravelClass } from "../../../../@types/amadeus/flights/TravelClass";
-import { amadeus } from "../../../../providers/amadeus/amadeusApi";
+import { amadeus } from "../../../../shared/providers/amadeus/amadeusApi";
 
 export class FlightOfferSearchService {
 

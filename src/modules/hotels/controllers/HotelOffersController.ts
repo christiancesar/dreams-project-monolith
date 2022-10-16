@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { HotelOffersSearch } from "../dtos/HotelOffersSearch";
 import { HotelOfferSearchService } from "../services/hotelOffers/HotelOffersSearchService";
 
@@ -13,7 +14,7 @@ export class HotelOffersController {
       roomQuantity
     } = request.body as HotelOffersSearch;
 
-    const hotelOfferSearchService = new HotelOfferSearchService();
+    const hotelOfferSearchService = container.resolve(HotelOfferSearchService);
 
     const hotels = await hotelOfferSearchService.execute({
       adults,

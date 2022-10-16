@@ -1,6 +1,6 @@
 import { HotelOfferSearchRequest } from "../../../../@types/amadeus/hotels/HotelOfferSearchRequest";
 import { HotelOfferSearchResponse } from "../../../../@types/amadeus/hotels/HotelOfferSearchResponse";
-import { amadeus } from "../../../../providers/amadeus/amadeusApi";
+import { amadeus } from "../../../../shared/providers/amadeus/amadeusApi";
 import { HotelOffersSearch } from "../../dtos/HotelOffersSearch";
 
 export class HotelOfferSearchService {

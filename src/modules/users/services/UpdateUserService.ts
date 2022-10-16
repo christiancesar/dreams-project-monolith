@@ -1,7 +1,8 @@
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
 import ObjectID from "bson-objectid";
-import { AppError } from "../../../errors/AppError";
+import { AppError } from "../../../shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
 type UpdateUserRequest = {
   id: string
@@ -11,13 +12,12 @@ type UpdateUserRequest = {
   age: number;
   email: string;
 }
-
+@injectable()
 export class UpdateUserService {
-  private userRepository: UsersRepository;
-
-  constructor() {
-    this.userRepository = new UsersRepository()
-  }
+  constructor(
+    @inject('UsersRepository')
+    private userRepository: UsersRepository
+  ) { }
 
   async execute({
     id,

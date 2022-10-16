@@ -2,9 +2,11 @@ import cors from 'cors';
 import "dotenv/config";
 import express from 'express';
 import 'express-async-errors';
+import 'reflect-metadata';
 import { prisma } from '../prisma';
 import { interceptErrorMiddleware } from './middlewares/interceptErrorMiddleware';
 import { routes } from './routes';
+import './shared/containers';
 
 const server = express();
 

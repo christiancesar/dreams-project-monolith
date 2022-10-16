@@ -1,7 +1,7 @@
 import { isMatch, isYesterday } from "date-fns";
 import { FlightOffer } from "../../../../@types/amadeus/flights/FlightOfferSearchResponse";
 import { HotelOffer } from "../../../../@types/amadeus/hotels/HotelOfferSearchResponse";
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "../../../../shared/errors/AppError";
 import { FlightOfferSearchService } from "../../../flights/services/flightOffers/FlightOfferSearchService";
 import { HotelOfferSearchService } from "../../../hotels/services/hotelOffers/HotelOffersSearchService";
 import { Package } from "../../entities/PackageEntity";

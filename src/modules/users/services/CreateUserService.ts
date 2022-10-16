@@ -1,4 +1,5 @@
-import { AppError } from "../../../errors/AppError";
+import { injectable, inject } from 'tsyringe';
+import { AppError } from "../../../shared/errors/AppError";
 import { User } from "../entities/UserEntity";
 import { UsersRepository } from "../repositories/implementations/UsersRepository";
 
@@ -10,12 +11,13 @@ type CreateUserRequest = {
   email: string;
 }
 
+@injectable()
 export class CreateUserService {
-  private userRepository: UsersRepository;
 
-  constructor() {
-    this.userRepository = new UsersRepository()
-  }
+  constructor(
+    @inject('UsersRepository')
+    private userRepository: UsersRepository
+  ) { }
 
   async execute({
     firstName,

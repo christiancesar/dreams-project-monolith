@@ -1,3 +1,4 @@
+import { container } from 'tsyringe';
 import { Request, Response } from 'express';
 import { CreateUserService } from "../services/CreateUserService";
 import { ListUsersService } from "../services/ListUsersService";
@@ -10,7 +11,7 @@ export class UsersControllers {
   async create(request: Request, response: Response): Promise<Response> {
     const { firstName, lastName, birthday, age, email } = request.body;
 
-    const createUserService = new CreateUserService();
+    const createUserService = container.resolve(CreateUserService);
 
     const user = await createUserService.execute({
       firstName,
@@ -24,7 +25,7 @@ export class UsersControllers {
   }
 
   async index(request: Request, response: Response): Promise<Response> {
-    const listUsersService = new ListUsersService();
+    const listUsersService = container.resolve(ListUsersService);
 
     const users = await listUsersService.execute()
 
@@ -34,7 +35,7 @@ export class UsersControllers {
   async show(request: Request, response: Response): Promise<Response> {
     const { userId } = request.params;
 
-    const showUserService = new ShowUserService();
+    const showUserService = container.resolve(ShowUserService);
 
     const user = await showUserService.execute({ userId })
 
@@ -44,7 +45,7 @@ export class UsersControllers {
   async update(request: Request, response: Response): Promise<Response> {
     const { id, firstName, lastName, birthday, age, email } = request.body;
 
-    const updateUserService = new UpdateUserService();
+    const updateUserService = container.resolve(UpdateUserService);
 
     const user = await updateUserService.execute({
       id,
