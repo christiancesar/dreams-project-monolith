@@ -1,8 +1,8 @@
-import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 import ObjectID from "bson-objectid";
-import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
-import { AppError } from "../../../../shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../shared/errors/AppError";
+import { IUsersRepository } from "../../../users/repositories/interfaces/IUserRepository";
+import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
 
 type HotelRequest = {
   userId: string;
@@ -21,10 +21,10 @@ export class ListHotelsByUserService {
 
   constructor(
     @inject('HotelsRepository')
-    private hotelsRepository: HotelsRepository,
+    private hotelsRepository: IHotelsRepository,
 
     @inject('UsersRepository')
-    private userRepository: UsersRepository
+    private userRepository: IUsersRepository
   ) {  }
 
   async execute({ userId }: HotelRequest): Promise<HotelResponse[]> {

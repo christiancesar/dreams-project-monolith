@@ -1,8 +1,8 @@
-import { injectable, inject } from 'tsyringe';
 import ObjectID from "bson-objectid";
+import { inject, injectable } from 'tsyringe';
 import { AppError } from "../../../shared/errors/AppError";
 import { User } from "../entities/UserEntity";
-import { UsersRepository } from "../repositories/implementations/UsersRepository";
+import { IUsersRepository } from '../repositories/interfaces/IUserRepository';
 
 type ShowUserRequest = {
   userId: string
@@ -12,7 +12,7 @@ type ShowUserRequest = {
 export class ShowUserService {
   constructor(
     @inject('UsersRepository')
-    private userRepository: UsersRepository
+    private userRepository: IUsersRepository
   ) { }
 
   async execute({ userId }: ShowUserRequest): Promise<User> {

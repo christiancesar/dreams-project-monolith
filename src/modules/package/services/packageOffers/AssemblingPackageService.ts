@@ -1,13 +1,11 @@
 import { isMatch, isYesterday } from "date-fns";
+import { container } from "tsyringe";
 import { FlightOffer } from "../../../../@types/amadeus/flights/FlightOfferSearchResponse";
 import { HotelOffer } from "../../../../@types/amadeus/hotels/HotelOfferSearchResponse";
 import { AppError } from "../../../../shared/errors/AppError";
 import { FlightOfferSearchService } from "../../../flights/services/flightOffers/FlightOfferSearchService";
 import { HotelOfferSearchService } from "../../../hotels/services/hotelOffers/HotelOffersSearchService";
 import { Package } from "../../entities/PackageEntity";
-
-const flightOfferSearchService = new FlightOfferSearchService();
-const hotelOfferSearchService = new HotelOfferSearchService()
 
 type PackageOffersRequest = {
   originLocationCode: string;
@@ -51,6 +49,10 @@ export class AssemblingPackageService {
     if (isYesterday(newDateFepartureDate)) {
       throw new AppError("You can't search in the past.");
     }
+
+    const flightOfferSearchService = container.resolve(FlightOfferSearchService);
+
+    const hotelOfferSearchService = container.resolve(HotelOfferSearchService);
 
     const flights = await flightOfferSearchService.execute({
       adults,

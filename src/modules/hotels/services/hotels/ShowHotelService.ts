@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
+import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
 
 type ShowHotelRequest = {
   hotelId: string
@@ -13,7 +14,7 @@ export class ShowHotelService {
 
   constructor(
     @inject('HotelsRepository')
-    private hotelsRepository: HotelsRepository
+    private hotelsRepository: IHotelsRepository
   ) {
   }
 

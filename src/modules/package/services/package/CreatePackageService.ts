@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 import { Flight } from "../../../flights/entities/FlightEntity";
-import { FlightsRepository } from "../../../flights/repositories/implementations/FlightsRepository";
+import { IFlightsRepository } from "../../../flights/repositories/interfaces/IFlightsRepository";
 import { Hotel } from "../../../hotels/entities/HotelEntity";
-import { HotelsRepository } from "../../../hotels/repositories/implementations/HotelsRepository";
+import { IHotelsRepository } from "../../../hotels/repositories/interfaces/IHotelsRepository";
 import { Package } from "../../entities/PackageEntity";
-import { PackageRepository } from "../../repositories/implementations/PackageRepository";
+import { IPackageRepository } from "../../repositories/interfaces/IPackageRepository";
 
 type PackageCreateRequestDTO = {
   userId: string;
@@ -40,13 +40,13 @@ type PackageCreateResponseDTO = {
 export class CreatePackageService {
   constructor(
     @inject('PackageRepository')
-    private packageRepository: PackageRepository,
+    private packageRepository: IPackageRepository,
 
     @inject('HotelsRepository')
-    private hotelsRepository: HotelsRepository,
+    private hotelsRepository: IHotelsRepository,
 
     @inject('FlightsRepository')
-    private flightsRepository: FlightsRepository,
+    private flightsRepository: IFlightsRepository,
   ) { }
 
   async execute({ userId, hotel, flight, amount, off }: PackageCreateRequestDTO): Promise<PackageCreateResponseDTO> {

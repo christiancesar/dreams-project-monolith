@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 import { Flight } from "../../../flights/entities/FlightEntity";
-import { FlightsRepository } from "../../../flights/repositories/implementations/FlightsRepository";
+import { IFlightsRepository } from "../../../flights/repositories/interfaces/IFlightsRepository";
 import { Hotel } from "../../../hotels/entities/HotelEntity";
-import { HotelsRepository } from "../../../hotels/repositories/implementations/HotelsRepository";
+import { IHotelsRepository } from "../../../hotels/repositories/interfaces/IHotelsRepository";
 import { Package } from "../../entities/PackageEntity";
-import { PackageRepository } from "../../repositories/implementations/PackageRepository";
+import { IPackageRepository } from "../../repositories/interfaces/IPackageRepository";
 
 type PackagesByUserRequest = {
   userId: string
@@ -26,19 +26,19 @@ export class ListPackagesByUserService {
 
   constructor(
     @inject('PackageRepository')
-    private packageRepository: PackageRepository,
+    private packageRepository: IPackageRepository,
 
     @inject('FlightsRepository')
-    private flightsRepository: FlightsRepository,
+    private flightsRepository: IFlightsRepository,
 
     @inject('HotelsRepository')
-    private hotelsRepository: HotelsRepository,
+    private hotelsRepository: IHotelsRepository,
   ) {  }
 
   async execute({ userId }: PackagesByUserRequest): Promise<PackageCreateResponse[]> {
 
     const packages = await this.packageRepository.findPackagesByUserId(userId);
-    let packagesByUser: PackageCreateResponse[]
+    let packagesByUser: PackageCreateResponse[];
 
     const packagesByUserPromise = packages.map(
       async (package_: Package) => {
@@ -55,11 +55,11 @@ export class ListPackagesByUserService {
           updatedAt: package_.updatedAt,
         }
       }
-    )
+    );
 
     await Promise.all(packagesByUserPromise).then((results) => {
       packagesByUser = results;
-    })
+    });
 
     return packagesByUser;
   }

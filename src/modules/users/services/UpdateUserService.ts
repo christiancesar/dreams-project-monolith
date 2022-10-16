@@ -3,6 +3,7 @@ import { UsersRepository } from "../repositories/implementations/UsersRepository
 import ObjectID from "bson-objectid";
 import { AppError } from "../../../shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
+import { IUsersRepository } from "../repositories/interfaces/IUserRepository";
 
 type UpdateUserRequest = {
   id: string
@@ -16,7 +17,7 @@ type UpdateUserRequest = {
 export class UpdateUserService {
   constructor(
     @inject('UsersRepository')
-    private userRepository: UsersRepository
+    private userRepository: IUsersRepository
   ) { }
 
   async execute({
