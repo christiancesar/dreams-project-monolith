@@ -1,5 +1,4 @@
-
-export type FlightOfferSearchRequest = {
+export type FlightOfferSearchDTO = {
   originLocationCode: string;
   destinationLocationCode: string;
   departureDate: string;
@@ -8,6 +7,4 @@ export type FlightOfferSearchRequest = {
   children?: number;
   infants?: number;
   travelClass: string;
-  currencyCode: string;
-  max: number;
 }

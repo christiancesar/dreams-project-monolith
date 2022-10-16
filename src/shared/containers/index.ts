@@ -1,4 +1,7 @@
 import { container } from 'tsyringe';
+
+import './providers';
+
 import { FlightsRepository } from '../../modules/flights/repositories/implementations/FlightsRepository';
 import { IFlightsRepository } from '../../modules/flights/repositories/interfaces/IFlightsRepository';
 import { HotelsRepository } from '../../modules/hotels/repositories/implementations/HotelsRepository';
@@ -7,6 +10,7 @@ import { PackageRepository } from '../../modules/package/repositories/implementa
 import { IPackageRepository } from '../../modules/package/repositories/interfaces/IPackageRepository';
 import { UsersRepository } from '../../modules/users/repositories/implementations/UsersRepository';
 import { IUsersRepository } from '../../modules/users/repositories/interfaces/IUserRepository';
+
 
 
 container.registerSingleton<IFlightsRepository>(

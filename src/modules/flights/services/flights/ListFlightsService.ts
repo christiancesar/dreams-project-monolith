@@ -1,13 +1,13 @@
 import { inject, injectable } from "tsyringe";
 import { Flight } from "../../entities/FlightEntity";
-import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
+import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
 
 @injectable()
 export class ListFlightsService {
 
   constructor(
     @inject('FlightsRepository')
-    private flightsRepository: FlightsRepository
+    private flightsRepository: IFlightsRepository
   ) {
   }
 

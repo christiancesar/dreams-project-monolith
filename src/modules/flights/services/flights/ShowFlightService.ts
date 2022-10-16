@@ -2,7 +2,7 @@ import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { Flight } from "../../entities/FlightEntity";
-import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
+import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
 
 type ShowFlightRequest = {
   flightId: string
@@ -13,7 +13,7 @@ export class ShowFlightService {
 
   constructor(
     @inject('FlightsRepository')
-    private flightsRepository: FlightsRepository
+    private flightsRepository: IFlightsRepository
   ) {
   }
 

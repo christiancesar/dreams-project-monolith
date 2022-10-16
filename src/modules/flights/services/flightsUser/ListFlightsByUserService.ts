@@ -1,9 +1,9 @@
 import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
-import { UsersRepository } from "../../../users/repositories/implementations/UsersRepository";
+import { IUsersRepository } from "../../../users/repositories/interfaces/IUserRepository";
 import { Flight } from "../../entities/FlightEntity";
-import { FlightsRepository } from "../../repositories/implementations/FlightsRepository";
+import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
 
 type ListFlightsByUserRequest = {
   userId: string
@@ -14,9 +14,9 @@ export class ListFlightsByUserService {
 
   constructor(
     @inject('FlightsRepository')
-    private flightsRepository: FlightsRepository,
+    private flightsRepository: IFlightsRepository,
     @inject('UsersRepository')
-    private userRepository: UsersRepository
+    private userRepository: IUsersRepository
   ) {  }
 
   async execute({ userId }: ListFlightsByUserRequest): Promise<Flight[]> {

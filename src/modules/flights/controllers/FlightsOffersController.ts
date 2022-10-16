@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { FlightOfferSearchRequest } from "../../../@types/amadeus/flights/FlightOfferSearchRequest";
+import { container } from "tsyringe";
+import { FlightOfferSearchDTO } from "../../../shared/containers/providers/FlightProvider/dtos/FlightOffersSearchDTO";
 import { FlightOfferSearchService } from "../services/flightOffers/FlightOfferSearchService";
 
 export class FlightsOffersController {
@@ -16,9 +17,9 @@ export class FlightsOffersController {
       children,
       infants,
       returnDate
-    } = request.body as Omit<FlightOfferSearchRequest, 'max' | 'currencyCode'>
+    } = request.body as FlightOfferSearchDTO
 
-    const flightOfferSearchService = new FlightOfferSearchService();
+    const flightOfferSearchService = container.resolve(FlightOfferSearchService);
 
     const flightOffers = await flightOfferSearchService.execute({
       adults,
