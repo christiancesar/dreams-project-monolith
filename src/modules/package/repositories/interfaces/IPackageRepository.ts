@@ -1,4 +1,4 @@
-import { CreatePackageDTO } from "../../dtos/CreatePackageDTO";
+import { CreatePackageDTO } from "../../dtos/PackageCreateRequestDTO";
 import { Package } from "../../entities/PackageEntity";
 
 export interface IPackageRepository {

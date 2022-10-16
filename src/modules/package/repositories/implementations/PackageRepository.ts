@@ -1,5 +1,5 @@
 import { prisma } from "../../../../../prisma";
-import { CreatePackageDTO } from "../../dtos/CreatePackageDTO";
+import { CreatePackageDTO } from "../../dtos/PackageCreateRequestDTO";
 import { Package } from "../../entities/PackageEntity";
 import { IPackageRepository } from "../interfaces/IPackageRepository";
 

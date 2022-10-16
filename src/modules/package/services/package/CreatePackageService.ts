@@ -3,38 +3,9 @@ import { Flight } from "../../../flights/entities/FlightEntity";
 import { IFlightsRepository } from "../../../flights/repositories/interfaces/IFlightsRepository";
 import { Hotel } from "../../../hotels/entities/HotelEntity";
 import { IHotelsRepository } from "../../../hotels/repositories/interfaces/IHotelsRepository";
+import { PackageCreateResponseDTO } from "../../dtos/PackageCreateResponseDTO";
 import { Package } from "../../entities/PackageEntity";
 import { IPackageRepository } from "../../repositories/interfaces/IPackageRepository";
-
-type PackageCreateRequestDTO = {
-  userId: string;
-  hotel: {
-    hotel: any;
-    offers: any;
-  };
-  flight: {
-    itineraries: any;
-    price: any;
-  };
-  amount: number;
-  off: number;
-}
-
-type PackageCreateResponseDTO = {
-  id: string
-  hotel: {
-    hotel: any;
-    offers: any;
-  };
-  flight: {
-    itineraries: any;
-    price: any;
-  };
-  amount: number;
-  off: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 @injectable()
 export class CreatePackageService {
