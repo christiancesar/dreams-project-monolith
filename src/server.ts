@@ -4,7 +4,7 @@ import express from 'express';
 import 'express-async-errors';
 import 'reflect-metadata';
 import { prisma } from '../prisma';
-import { interceptErrorMiddleware } from './middlewares/interceptErrorMiddleware';
+import { interceptErrorMiddleware } from './shared/middlewares/interceptErrorMiddleware';
 import { routes } from './routes';
 import './shared/containers';
 
