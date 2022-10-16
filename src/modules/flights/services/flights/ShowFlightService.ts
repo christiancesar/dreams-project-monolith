@@ -1,12 +1,9 @@
 import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { ShowFlightRequest } from "../../dtos/ShowFlightRequestDTO";
 import { Flight } from "../../entities/FlightEntity";
 import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
-
-type ShowFlightRequest = {
-  flightId: string
-}
 
 @injectable()
 export class ShowFlightService {

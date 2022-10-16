@@ -2,15 +2,9 @@ import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IUsersRepository } from "../../../users/repositories/interfaces/IUserRepository";
+import { CreateFlightRequestDTO } from "../../dtos/CreateFlightRequestDTO";
 import { Flight } from "../../entities/FlightEntity";
 import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
-
-type CreateFlightRequest = {
-  itineraries: string;
-  price: string;
-  userId: string;
-  isPackage: boolean;
-}
 
 @injectable()
 export class CreateFlightService {
@@ -24,7 +18,7 @@ export class CreateFlightService {
   ) {
   }
 
-  async execute({ itineraries, price, userId, isPackage }: CreateFlightRequest): Promise<Flight> {
+  async execute({ itineraries, price, userId, isPackage }: CreateFlightRequestDTO): Promise<Flight> {
     if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id or empty!")
     }

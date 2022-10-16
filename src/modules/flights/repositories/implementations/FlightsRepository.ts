@@ -1,5 +1,5 @@
 import { prisma } from "../../../../../prisma"
-import { CreateFlightDTO } from "../../dtos/CreateFlightDTO"
+import { CreateFlightDTO } from "../../dtos/CreateFlightRequestDTO"
 import { Flight } from "../../entities/FlightEntity"
 import { IFlightsRepository } from "../interfaces/IFlightsRepository"
 

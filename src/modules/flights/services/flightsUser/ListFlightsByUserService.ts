@@ -2,12 +2,9 @@ import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IUsersRepository } from "../../../users/repositories/interfaces/IUserRepository";
+import { ListFlightsByUserRequestDTO } from "../../dtos/ListFlightByUserRequestDTO";
 import { Flight } from "../../entities/FlightEntity";
 import { IFlightsRepository } from "../../repositories/interfaces/IFlightsRepository";
-
-type ListFlightsByUserRequest = {
-  userId: string
-}
 
 @injectable()
 export class ListFlightsByUserService {
@@ -19,7 +16,7 @@ export class ListFlightsByUserService {
     private userRepository: IUsersRepository
   ) {  }
 
-  async execute({ userId }: ListFlightsByUserRequest): Promise<Flight[]> {
+  async execute({ userId }: ListFlightsByUserRequestDTO): Promise<Flight[]> {
     if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id")
     }
