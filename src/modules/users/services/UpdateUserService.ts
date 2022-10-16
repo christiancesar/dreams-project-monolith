@@ -1,10 +1,9 @@
-import { User } from "../entities/UserEntity";
-import { UsersRepository } from "../repositories/implementations/UsersRepository";
 import ObjectID from "bson-objectid";
-import { AppError } from "../../../shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { IUsersRepository } from "../repositories/interfaces/IUserRepository";
+import { AppError } from "../../../shared/errors/AppError";
 import { UpdateUserRequestDTO } from "../dtos/UpdateUserRequestDTO";
+import { User } from "../entities/UserEntity";
+import { IUsersRepository } from "../repositories/interfaces/IUserRepository";
 
 @injectable()
 export class UpdateUserService {
