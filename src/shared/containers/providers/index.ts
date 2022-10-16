@@ -1,1 +1,2 @@
-import './FlightProvider'
+import './FlightProvider';
+import './HotelProvider';

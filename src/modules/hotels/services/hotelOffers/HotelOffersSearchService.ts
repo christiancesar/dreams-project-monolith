@@ -1,32 +1,30 @@
-import { HotelOfferSearchRequest } from "../../../../@types/amadeus/hotels/HotelOfferSearchRequest";
+import { inject, injectable } from "tsyringe";
 import { HotelOfferSearchResponse } from "../../../../@types/amadeus/hotels/HotelOfferSearchResponse";
-import { amadeus } from "../../../../shared/containers/providers/FlightProvider/amadeusApi";
-import { HotelOffersSearch } from "../../dtos/HotelOffersSearch";
+import { HotelOffersSearchDTO } from "../../../../shared/containers/providers/HotelProvider/dtos/HotelOffersSearchDTO";
+import { IHotelProvider } from "../../../../shared/containers/providers/HotelProvider/interfaces/IHotelProvider";
 
+@injectable()
 export class HotelOfferSearchService {
+  constructor(
+    @inject('HotelProvider')
+    private hotelProvider: IHotelProvider
+  ) { }
   async execute({
     adults,
     checkInDate,
     checkOutDate,
     cityCode,
     roomQuantity
-  }: HotelOffersSearch): Promise<HotelOfferSearchResponse> {
-    const hotelOffersSearch = await amadeus.shopping.hotelOffers.get({
-      cityCode,
-      checkInDate,
-      checkOutDate,
-      roomQuantity,
-      adults,
-      radius: 50,
-      radiusUnit: 'KM',
-      paymentPolicy: 'NONE',
-      includeClosed: false,
-      bestRateOnly: true,
-      view: 'FULL',
-      sort: 'NONE',
-      currency: 'BRL',
-      // "page%5Blimit%5D": 1
-    } as HotelOfferSearchRequest) as HotelOfferSearchResponse;
+  }: HotelOffersSearchDTO): Promise<HotelOfferSearchResponse> {
+    const hotelOffersSearch = await this.hotelProvider.findHotels(
+      {
+        adults,
+        checkInDate,
+        checkOutDate,
+        cityCode,
+        roomQuantity
+      }
+    );
 
     return hotelOffersSearch
   }

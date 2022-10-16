@@ -1,32 +1,21 @@
 import { isMatch, isYesterday } from "date-fns";
-import { container } from "tsyringe";
-import { FlightOffer } from "../../../../@types/amadeus/flights/FlightOfferSearchResponse";
-import { HotelOffer } from "../../../../@types/amadeus/hotels/HotelOfferSearchResponse";
+import { container, inject, injectable } from "tsyringe";
+import { IFlightProvider } from "../../../../shared/containers/providers/FlightProvider/interfaces/IFlightProvider";
+import { IHotelProvider } from "../../../../shared/containers/providers/HotelProvider/interfaces/IHotelProvider";
 import { AppError } from "../../../../shared/errors/AppError";
 import { FlightOfferSearchService } from "../../../flights/services/flightOffers/FlightOfferSearchService";
 import { HotelOfferSearchService } from "../../../hotels/services/hotelOffers/HotelOffersSearchService";
-import { Package } from "../../entities/PackageEntity";
+import { PackageOffersResponseDTO } from "../../dtos/PackageOffersResponseDTO";
 
-type PackageOffersRequest = {
-  originLocationCode: string;
-  destinationLocationCode: string;
-  departureDate: string;
-  returnDate: string;
-  adults: number;
-  children: number;
-  infants: number;
-  travelClass: string;
-  roomQuantity: number;
-}
-
-type PackageResponse = {
-  flight: FlightOffer;
-  hotel: HotelOffer;
-  off: number;
-  amount: number;
-}
-
+@injectable()
 export class AssemblingPackageService {
+  constructor(
+    @inject('HotelProvider')
+    private hotelProvider: IHotelProvider,
+    @inject('FlightProvider')
+    private flightProvider: IFlightProvider
+  ) {}
+
   async execute({
     adults,
     children,
@@ -36,8 +25,8 @@ export class AssemblingPackageService {
     originLocationCode,
     returnDate,
     travelClass
-  }: PackageOffersRequest): Promise<Package[]> {
-    // isBefore(new Date(departureDate), Date.now())
+  }: PackageOffersRequestDTO): Promise<PackageOffersResponseDTO[]> {
+
     if (!isMatch(departureDate, 'yyyy-MM-dd')) {
       throw new AppError("Formart departure date not match, example format yyyy-MM-dd.");
     }
@@ -50,11 +39,8 @@ export class AssemblingPackageService {
       throw new AppError("You can't search in the past.");
     }
 
-    const flightOfferSearchService = container.resolve(FlightOfferSearchService);
 
-    const hotelOfferSearchService = container.resolve(HotelOfferSearchService);
-
-    const flights = await flightOfferSearchService.execute({
+    const flights = await this.flightProvider.findFlights({
       adults,
       children,
       departureDate,
@@ -65,7 +51,7 @@ export class AssemblingPackageService {
       travelClass
     });
 
-    const hotels = await hotelOfferSearchService.execute({
+    const hotels = await this.hotelProvider.findHotels ({
       adults,
       checkInDate: departureDate,
       checkOutDate: returnDate,
@@ -73,7 +59,7 @@ export class AssemblingPackageService {
       roomQuantity: 1
     });
 
-    const packages = [];
+    const packages: PackageOffersResponseDTO[] = [];
 
     if (hotels.data.length < flights.data.length) {
       for (let index = 0; index < hotels.data.length; index++) {
@@ -83,7 +69,7 @@ export class AssemblingPackageService {
           amount: Number(hotels.data[index].offers[0].price.total) + Number(flights.data[index].price.total),
           off: Math.floor(Math.random() * (50 - 0)) + 0,
 
-        } as PackageResponse)
+        } as PackageOffersResponseDTO)
 
       }
     } else {
@@ -91,13 +77,13 @@ export class AssemblingPackageService {
         packages.push({
           flight: flights.data[index],
           hotel: hotels.data[index],
-          total: Number(hotels.data[index].offers[0].price.total) + Number(flights.data[index].price.total),
+          amount: Number(hotels.data[index].offers[0].price.total) + Number(flights.data[index].price.total),
           off: Math.floor(Math.random() * (50 - 0)) + 0,
-        })
+        } as PackageOffersResponseDTO)
 
       }
     }
 
-    return packages as Package[]
+    return packages
   }
 }
