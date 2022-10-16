@@ -1,5 +1,5 @@
 import { prisma } from "../../../../../prisma"
-import { CreateHotelDTO } from "../../dtos/CreateHotelDTO"
+import { CreateHotelDTO } from "../../dtos/CreateHotelRequestDTO"
 import { Hotel } from "../../entities/HotelEntity"
 import { IHotelsRepository } from "../interfaces/IHotelsRepository"
 

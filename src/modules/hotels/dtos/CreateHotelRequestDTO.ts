@@ -1,4 +1,4 @@
-export type CreateHotelDTO = {
+export type CreateHotelRequestDTO = {
   userId: string;
   hotel: any;
   offers: any;

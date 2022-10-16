@@ -1,4 +1,4 @@
-import { CreateHotelDTO } from "../../dtos/CreateHotelDTO"
+import { CreateHotelDTO } from "../../dtos/CreateHotelRequestDTO"
 import { Hotel } from "../../entities/HotelEntity"
 
 export interface IHotelsRepository {

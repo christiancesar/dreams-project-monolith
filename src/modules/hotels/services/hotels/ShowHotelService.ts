@@ -1,13 +1,10 @@
 import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
+import { ShowHotelRequestDTO } from "../../dtos/ShowHotelRequestDTO";
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
-
-type ShowHotelRequest = {
-  hotelId: string
-}
 
 @injectable()
 export class ShowHotelService {
@@ -18,7 +15,7 @@ export class ShowHotelService {
   ) {
   }
 
-  async execute({ hotelId }: ShowHotelRequest): Promise<Hotel | null> {
+  async execute({ hotelId }: ShowHotelRequestDTO): Promise<Hotel | null> {
     if (!ObjectID.isValid(hotelId)) {
       throw new AppError("Invalid id")
     }

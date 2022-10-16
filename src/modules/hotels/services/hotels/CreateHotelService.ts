@@ -2,22 +2,9 @@ import ObjectID from "bson-objectid";
 import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { IUsersRepository } from "../../../users/repositories/interfaces/IUserRepository";
+import { CreateHotelRequestDTO } from "../../dtos/CreateHotelRequestDTO";
+import { CreateHotelResponseDTO } from "../../dtos/CreateHotelResponseDTO";
 import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
-
-type CreateHotelRequest = {
-  userId: string;
-  hotel: string;
-  offers: string;
-  isPackage: boolean;
-}
-
-type HotelResponse = {
-  id: string;
-  hotel: string;
-  offers: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
 
 @injectable()
 export class CreateHotelService {
@@ -30,7 +17,7 @@ export class CreateHotelService {
     private userRepository: IUsersRepository
   ) { }
 
-  async execute({ hotel, offers, userId, isPackage }: CreateHotelRequest): Promise<HotelResponse> {
+  async execute({ hotel, offers, userId, isPackage }: CreateHotelRequestDTO): Promise<CreateHotelResponseDTO> {
 
     if (!ObjectID.isValid(userId)) {
       throw new AppError("Invalid id or empty!")
