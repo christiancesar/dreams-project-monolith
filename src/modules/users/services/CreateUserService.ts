@@ -3,14 +3,6 @@ import { AppError } from "../../../shared/errors/AppError";
 import { User } from "../entities/UserEntity";
 import { IUsersRepository } from '../repositories/interfaces/IUserRepository';
 
-type CreateUserRequest = {
-  firstName: string;
-  lastName: string;
-  birthday: string;
-  age: number;
-  email: string;
-}
-
 @injectable()
 export class CreateUserService {
 
@@ -25,7 +17,7 @@ export class CreateUserService {
     birthday,
     age,
     email
-  }: CreateUserRequest): Promise<User> {
+  }: CreateUserRequestDTO): Promise<User> {
     if (age <= 17) {
       throw new AppError("Age must be greater than 17");
     }

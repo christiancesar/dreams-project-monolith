@@ -1,12 +1,11 @@
 import ObjectID from "bson-objectid";
 import { inject, injectable } from 'tsyringe';
 import { AppError } from "../../../shared/errors/AppError";
+import { ShowUserRequestDTO } from "../dtos/ShowUserRequestDTO";
 import { User } from "../entities/UserEntity";
 import { IUsersRepository } from '../repositories/interfaces/IUserRepository';
 
-type ShowUserRequest = {
-  userId: string
-}
+
 
 @injectable()
 export class ShowUserService {
@@ -15,7 +14,7 @@ export class ShowUserService {
     private userRepository: IUsersRepository
   ) { }
 
-  async execute({ userId }: ShowUserRequest): Promise<User> {
+  async execute({ userId }: ShowUserRequestDTO): Promise<User> {
 
     if (!ObjectID.isValid(userId)){
       throw new AppError("Invalid id")

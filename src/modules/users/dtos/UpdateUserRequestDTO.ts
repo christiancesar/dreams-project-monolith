@@ -1,8 +1,8 @@
-export type UpdateUserDTO = {
-  id: string;
+export type UpdateUserRequestDTO = {
+  id: string
   firstName: string;
   lastName: string;
-  age: number;
   birthday: string;
+  age: number;
   email: string;
 }

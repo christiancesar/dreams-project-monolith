@@ -1,6 +1,6 @@
 import { prisma } from "../../../../../prisma";
-import { CreateUserDTO } from "../../dtos/CreateUserDTO";
-import { UpdateUserDTO } from "../../dtos/UpdateUserDTO";
+import { CreateUserDTO } from "../../dtos/CreateUserRequestDTO";
+import { UpdateUserDTO } from "../../dtos/UpdateUserRequestDTO";
 import { User } from "../../entities/UserEntity";
 import { IUsersRepository } from "../interfaces/IUserRepository";
 

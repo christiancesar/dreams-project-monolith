@@ -4,15 +4,8 @@ import ObjectID from "bson-objectid";
 import { AppError } from "../../../shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 import { IUsersRepository } from "../repositories/interfaces/IUserRepository";
+import { UpdateUserRequestDTO } from "../dtos/UpdateUserRequestDTO";
 
-type UpdateUserRequest = {
-  id: string
-  firstName: string;
-  lastName: string;
-  birthday: string;
-  age: number;
-  email: string;
-}
 @injectable()
 export class UpdateUserService {
   constructor(
@@ -27,7 +20,7 @@ export class UpdateUserService {
     birthday,
     age,
     email
-  }: UpdateUserRequest): Promise<User> {
+  }: UpdateUserRequestDTO): Promise<User> {
 
     if (!ObjectID.isValid(id)) {
       throw new AppError("Invalid id")
