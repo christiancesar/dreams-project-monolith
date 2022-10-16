@@ -11,8 +11,6 @@ import { IPackageRepository } from '../../modules/package/repositories/interface
 import { UsersRepository } from '../../modules/users/repositories/implementations/UsersRepository';
 import { IUsersRepository } from '../../modules/users/repositories/interfaces/IUserRepository';
 
-
-
 container.registerSingleton<IFlightsRepository>(
   'FlightsRepository',
   FlightsRepository,

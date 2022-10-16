@@ -1,4 +1,4 @@
-type PackageOffersRequestDTO = {
+export type PackageOffersRequestDTO = {
   originLocationCode: string;
   destinationLocationCode: string;
   departureDate: string;

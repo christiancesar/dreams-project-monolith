@@ -1,28 +1,13 @@
 import { inject, injectable } from "tsyringe";
-import { Flight } from "../../../flights/entities/FlightEntity";
 import { IFlightsRepository } from "../../../flights/repositories/interfaces/IFlightsRepository";
-import { Hotel } from "../../../hotels/entities/HotelEntity";
 import { IHotelsRepository } from "../../../hotels/repositories/interfaces/IHotelsRepository";
+import { PackageCreateResponseDTO } from "../../dtos/PackageCreateResponseDTO";
+import { PackagesByUserRequestDTO } from "../../dtos/PackagesByUserRequestDTO";
 import { Package } from "../../entities/PackageEntity";
 import { IPackageRepository } from "../../repositories/interfaces/IPackageRepository";
 
-type PackagesByUserRequest = {
-  userId: string
-}
-
-type PackageCreateResponse = {
-  id: string
-  hotel: Hotel;
-  flight: Flight;
-  amount: number;
-  off: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 @injectable()
 export class ListPackagesByUserService {
-
 
   constructor(
     @inject('PackageRepository')
@@ -35,10 +20,10 @@ export class ListPackagesByUserService {
     private hotelsRepository: IHotelsRepository,
   ) {  }
 
-  async execute({ userId }: PackagesByUserRequest): Promise<PackageCreateResponse[]> {
+  async execute({ userId }: PackagesByUserRequestDTO): Promise<PackageCreateResponseDTO[]> {
 
     const packages = await this.packageRepository.findPackagesByUserId(userId);
-    let packagesByUser: PackageCreateResponse[];
+    let packagesByUser: PackageCreateResponseDTO[];
 
     const packagesByUserPromise = packages.map(
       async (package_: Package) => {
