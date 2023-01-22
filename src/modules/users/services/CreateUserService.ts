@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 import { AppError } from "../../../shared/errors/AppError";
+import { CreateUserRequestDTO } from '../dtos/CreateUserRequestDTO';
 import { User } from "../entities/UserEntity";
 import { IUsersRepository } from '../repositories/interfaces/IUserRepository';
 

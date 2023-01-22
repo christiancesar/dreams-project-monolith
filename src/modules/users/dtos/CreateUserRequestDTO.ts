@@ -1,4 +1,4 @@
-type CreateUserRequestDTO = {
+export type CreateUserRequestDTO = {
   firstName: string;
   lastName: string;
   birthday: string;

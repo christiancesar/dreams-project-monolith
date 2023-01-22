@@ -1,13 +1,17 @@
+import { inject, injectable } from "tsyringe";
 import { Hotel } from "../../entities/HotelEntity";
 import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
+import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
 
+@injectable()
 export class ListHotelsService {
 
-  private hotelsRepository: HotelsRepository;
+  constructor(
+    @inject('HotelsRepository')
+    private hotelsRepository: IHotelsRepository,
 
-  constructor() {
-    this.hotelsRepository = new HotelsRepository()
-  }
+  ) {  }
+
 
   async execute(): Promise<Hotel[]> {
     return this.hotelsRepository.findAllHotels()

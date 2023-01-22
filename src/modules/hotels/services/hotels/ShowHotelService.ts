@@ -3,7 +3,6 @@ import { inject, injectable } from "tsyringe";
 import { AppError } from "../../../../shared/errors/AppError";
 import { ShowHotelRequestDTO } from "../../dtos/ShowHotelRequestDTO";
 import { Hotel } from "../../entities/HotelEntity";
-import { HotelsRepository } from "../../repositories/implementations/HotelsRepository";
 import { IHotelsRepository } from "../../repositories/interfaces/IHotelsRepository";
 
 @injectable()
@@ -12,8 +11,7 @@ export class ShowHotelService {
   constructor(
     @inject('HotelsRepository')
     private hotelsRepository: IHotelsRepository
-  ) {
-  }
+  ) {  }
 
   async execute({ hotelId }: ShowHotelRequestDTO): Promise<Hotel | null> {
     if (!ObjectID.isValid(hotelId)) {

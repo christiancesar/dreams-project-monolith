@@ -1,10 +1,10 @@
 import { prisma } from "../../../../../prisma"
-import { CreateFlightDTO } from "../../dtos/CreateFlightRequestDTO"
+import { CreateFlightRequestDTO } from "../../dtos/CreateFlightRequestDTO"
 import { Flight } from "../../entities/FlightEntity"
 import { IFlightsRepository } from "../interfaces/IFlightsRepository"
 
 export class FlightsRepository implements IFlightsRepository {
-  async create(data: CreateFlightDTO): Promise<Flight> {
+  async create(data: CreateFlightRequestDTO): Promise<Flight> {
     const flight = await prisma.flight.create({ data })
     return flight
   }

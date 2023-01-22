@@ -13,7 +13,7 @@ export class CreateHotelService {
     @inject('HotelsRepository')
     private hotelsRepository: IHotelsRepository,
 
-    @inject('HotelsRepository')
+    @inject('UsersRepository')
     private userRepository: IUsersRepository
   ) { }
 
