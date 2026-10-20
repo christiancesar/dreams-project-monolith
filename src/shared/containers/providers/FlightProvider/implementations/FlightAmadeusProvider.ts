@@ -5,7 +5,7 @@ import { TravelClass } from "../../../../../@types/amadeus/flights/TravelClass";
 import { FlightOfferSearchDTO } from "../dtos/FlightOffersSearchDTO";
 import { IFlightProvider } from "../interfaces/IFlightProvider";
 
-const Amadeus = require('amadeus');
+import { Amadeus } from "dreams-amadeus";
 
 @injectable()
 export class FlightAmadeusProvider implements IFlightProvider {
@@ -13,7 +13,7 @@ export class FlightAmadeusProvider implements IFlightProvider {
   constructor() {
       this.amadeus = new Amadeus({
         clientId: process.env.AMADEUS_CLIENT_ID,
-        clientSecret: process.env.AMADEUS_CLIENT_SECRET,
+        clientSecret: process.env.AMADEUS_CLIENT_SECRET
       })
   }
   async findFlights({
@@ -26,7 +26,7 @@ export class FlightAmadeusProvider implements IFlightProvider {
     infants,
     returnDate
   }: FlightOfferSearchDTO): Promise<FlightOfferSearchResponse> {
-    const findTravelClass = TravelClass[travelClass]
+    const findTravelClass = TravelClass[travelClass as keyof typeof TravelClass]
 
     const flightOffersResponse = await this.amadeus.shopping.flightOffersSearch.get({
       originLocationCode,
